@@ -1,27 +1,25 @@
-import numpy as np
+def normalized_array(input_array):
+  minimum = input_array[0]
+  maximum = input_array[0]
 
-def normalized_array(data):
-    """
-    מנרמלת מערך נתונים לטווח של [0, 1] לפי שיטת Min-Max Scaling.
-    
-    הנוסחה לביצוע:
-    x_norm = (x - min) / (max - min)
-    
-    פרמטרים:
-    data (list or np.array): מערך של מספרים.
-    
-    מחזירה:
-    np.array: מערך מנורמל. אם כל הערכים במערך זהים, יש להחזיר מערך של אפסים.
-    """
-    # המרת הקלט ל-numpy array לצורך חישובים וקטוריים
-    data = np.array(data)
-    
-    # --- כיתבו את הקוד שלכם כאן ---
-    pass
-    # חשוב לזכור להחליף את pass ב- return
+  for value in input_array:
+    if value <  minimum:
+          minimum = value
+    if value >  maximum:
+          maximum = value
 
-if __name__ == "__main__":
-    # כאן הסטודנטים יכולים להריץ בדיקה עצמית מהירה
-    test_data = [10, 20, 30, 40, 50]
-    print(f"Original: {test_data}")
-    print(f"Normalized: {normalized_array(test_data)}")
+    if maximum == minimum:
+        new_array = []
+
+        for value in input_array:
+          new_array.append(0)
+
+        return new_array
+
+    new_array = []
+
+    for value in input_array:
+          norm = (value - minimum) / (maximum - minimum)
+          new_array.append(norm)
+
+    return new_array
